@@ -31,6 +31,7 @@ and functions into a common namespace
 
 type Shape interface{
   area() float64
+  perimiter() float64
 }
 
 type MultiShape struct{
@@ -61,11 +62,25 @@ func (ms *MultiShape) area() float64{
   return area
 }
 
+func (ms *MultiShape) perimiter() float64{
+  var p float64
+
+  for _, s := range ms.shapes{
+    p += s.perimiter()
+  }
+
+  return p
+}
+
 // copy receiver
 func (r Rectangle) area() float64{
   l := distance(r.x1, r.y1, r.x1, r.y2)
   w := distance(r.x1, r.y1, r.x2, r.y1)
   return l * w
+}
+
+func (r Rectangle) perimiter() float64{
+  return (r.x2 - r.x1) * 2 + (r.y1 - r.y2) * 2
 }
 
 func distance(x1, y1, x2, y2 float64) float64{
@@ -77,6 +92,10 @@ func distance(x1, y1, x2, y2 float64) float64{
 // copy receiver
 func (this Circle) area() float64{
   return math.Pi * this.r * this.r
+}
+
+func (this Circle) perimiter() float64{
+  return 2 * math.Pi * this.r
 }
 
 // this function works, but we must add a new slice parameters for each type of
@@ -126,4 +145,5 @@ func main(){
 
   fmt.Println(gms)
   fmt.Println(gms.area())
+  fmt.Println(gms.perimiter())
 }

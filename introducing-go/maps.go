@@ -6,6 +6,7 @@ import "fmt"
 // generally implemented as hash tables (ordered maps may use red black trees)
 // also known as associative array or dictionary
 func main(){
+  fmt.Println("starting demo...")
   mapDemo()
   deleteDemo()
   zeroDemo()

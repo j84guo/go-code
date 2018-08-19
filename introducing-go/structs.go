@@ -187,4 +187,7 @@ func main(){
     "A",
   }
   a.Talk()
+
+  // fields are also inherited from embedded types
+  fmt.Println(a.Name)
 }

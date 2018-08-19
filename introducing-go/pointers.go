@@ -11,9 +11,6 @@ function arguments are normally passed by value
 operators * and &:
 - pointers are represented by * followwd by the type of stored value, e.g. *int
 - * also de-references a pointer, and & returns the address of a variable
-
-new:
-
 */
 func main(){
   x := 10
@@ -37,8 +34,6 @@ func main(){
 
   // remember to de-reference xPtr
   fmt.Println(*xPtr)
-
-
 }
 
 func notZero(x int){

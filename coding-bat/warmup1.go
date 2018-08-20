@@ -82,6 +82,8 @@ func posNeg(a int, b int, n bool) bool{
   return n && an && bn || !n && an && !bn || !n && !an || bn
 }
 
+
+
 /*
 * utilities
 */

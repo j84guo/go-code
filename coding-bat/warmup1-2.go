@@ -21,6 +21,35 @@ func main(){
 
 	fmt.Println(
 		startOz("ozjackson"))
+
+	fmt.Println(
+		intMax(12, 2, 3))
+
+	fmt.Println(
+		close10(9, 11))
+
+	fmt.Println(
+		inRange(1, 10, 10))
+
+	fmt.Println(
+		in3050(39, 35))
+}
+
+func in3050(a, b int) bool{
+	return inRange(a, 30, 40) && inRange(b, 30, 40) || inRange(a, 50, 40) && inRange(b, 50, 40)
+}
+
+func close10(a int, b int) int{
+	da := abs(a - 10)
+	db := abs(b - 10)
+
+	if da < db{
+		return a
+	}else if db < da{
+		return b
+	}else{
+		return 0
+	}
 }
 
 func loneTeen(a int, b int) bool{
@@ -85,9 +114,38 @@ func startOz(s string) string{
 	return r
 }
 
+func intMax(a, b, c int) int{
+	sl := [3]int{a, b, c}
+	max := sl[0]
+
+	for _, v := range sl{
+		if v > max{
+			max = v
+		}
+	}
+
+	return max
+}
+
 /*
 * utility
 */
 func isTeen(i int) bool{
 	return i >= 13 && i <= 19
+}
+
+func abs(i int) int{
+	if i < 0{
+		i *= -1
+	}
+
+	return i
+}
+
+func inRange(i int, a int, b int) bool{
+	if a > b{
+		a, b = b, a
+	}
+
+	return i >= a && i <= b
 }

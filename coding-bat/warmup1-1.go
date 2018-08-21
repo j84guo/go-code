@@ -32,6 +32,26 @@ func main(){
 
   fmt.Println(
     missingChar("jackson", 1))
+
+  fmt.Println(
+	frontBack("ja"))
+
+  fmt.Println(
+    backAround("jackson"))
+
+  fmt.Println(
+    front22("jackson"))
+
+  fmt.Println(
+    startHi("hi world"))
+  fmt.Println(
+    startHi("hello world"))
+
+  fmt.Println(
+    icyHot(10, 1100))
+
+  fmt.Println(
+    in1020(10, 13))
 }
 
 func sleepIn(weekday bool, vacation bool) bool{
@@ -103,6 +123,59 @@ func missingChar(s string, i int) string{
   }
 
   return s[0:i] + s[i+1:len(s)]
+}
+
+func frontBack(s string) string{
+  if len(s) < 2{
+    return s
+  }
+
+  return string(s[len(s)-1]) + s[1:len(s)-1] + string(s[0])
+}
+
+func front3(s string) string{
+	var base string
+	if len(s) < 3{
+		base = s
+	}else{
+		base = s[0:2]
+	}
+
+	return base + base + base
+}
+
+func backAround(s string) string{
+  if len(s) == 0{
+    return ""
+  }
+
+  var c byte = s[len(s) - 1]
+  return string(c) + s + string(c)
+}
+
+func or35(n uint) bool{
+  return n % 3 == 0 || n % 5 == 0
+}
+
+func front22(s string) string{
+  if len(s) < 2{
+    return s + s + s
+  }
+
+  a := s[0:2]
+  return a + s + a
+}
+
+func startHi(s string) bool{
+  return strings.HasPrefix(s, "hi")
+}
+
+func icyHot(a int, b int) bool{
+  return a < 0 && b > 100 || b < 0 && a > 100
+}
+
+func in1020(a int, b int) bool{
+  return a >= 10 && a <= 20 || b >= 10 && b <= 20
 }
 
 /*

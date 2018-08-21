@@ -2,6 +2,7 @@ package main
 
 import(
   "fmt"
+  "strings"
 )
 
 func main(){
@@ -25,6 +26,12 @@ func main(){
 
   fmt.Println(
     posNeg(1, -1, true))
+
+  fmt.Println(
+	notString("not a string"))
+
+  fmt.Println(
+    missingChar("jackson", 1))
 }
 
 func sleepIn(weekday bool, vacation bool) bool{
@@ -82,7 +89,21 @@ func posNeg(a int, b int, n bool) bool{
   return n && an && bn || !n && an && !bn || !n && !an || bn
 }
 
+func notString(s string) string{
+  if strings.HasPrefix(s, "not"){
+    return s
+  }
 
+  return "not " + s
+}
+
+func missingChar(s string, i int) string{
+  if i < 0 || i > len(s){
+    panic("missingChar: invalid index")
+  }
+
+  return s[0:i] + s[i+1:len(s)]
+}
 
 /*
 * utilities

@@ -33,7 +33,18 @@ func main(){
 
 	fmt.Println(
 		in3050(39, 35))
+
+    fmt.Println(
+        stringE("jackson"))
+
+    fmt.Println(
+        stringE("jacksoneeee"))
+
+    fmt.Println(
+        stringE("ejaeckeson"))
 }
+
+
 
 func in3050(a, b int) bool{
 	return inRange(a, 30, 40) && inRange(b, 30, 40) || inRange(a, 50, 40) && inRange(b, 50, 40)
@@ -77,6 +88,11 @@ func delDel(s string) string{
 	}
 
 	return s
+}
+
+func stringE(s string) bool{
+    i := strings.Count(s, "e")
+    return i >=1 && i <= 3
 }
 
 func mixStart(s string) bool{

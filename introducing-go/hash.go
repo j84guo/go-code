@@ -1,12 +1,12 @@
 package main
 
-import(
+import (
+	"crypto/sha1"
 	"fmt"
 	"hash/crc32"
-	"crypto/sha1"
-	"reflect"
-	"os"
 	"io"
+	"os"
+	"reflect"
 )
 
 /*
@@ -15,8 +15,8 @@ import(
 *
 * cryptographic hash functions guarantee that the hash is hard to reverse (SHA-
 * 256), the rest are non-cryptographic (crc32)
-*/
-func crc32Demo(){
+ */
+func crc32Demo() {
 	// hasher
 	h := crc32.NewIEEE()
 	fmt.Println(reflect.TypeOf(h))
@@ -30,12 +30,12 @@ func crc32Demo(){
 	fmt.Println(v)
 }
 
-func fileHash(path string) (uint32, error){
+func fileHash(path string) (uint32, error) {
 	file, err := os.Open(path)
 
-	if err != nil{
+	if err != nil {
 		return 0, err
-	}else{
+	} else {
 		defer file.Close()
 	}
 
@@ -43,21 +43,21 @@ func fileHash(path string) (uint32, error){
 	h := crc32.NewIEEE()
 	_, err = io.Copy(h, file)
 
-	if err != nil{
+	if err != nil {
 		return 0, err
 	}
 
 	return h.Sum32(), nil
 }
 
-func sha1Demo(){
+func sha1Demo() {
 	h := sha1.New()
 	h.Write([]byte("test"))
 	bs := h.Sum([]byte{})
 	fmt.Println(bs)
 }
 
-func main(){
+func main() {
 	crc32Demo()
 	fmt.Println(fileHash("maps.go"))
 

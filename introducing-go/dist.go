@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func main(){
-  fmt.Println("Enter a distance in feet: ")
+func main() {
+	fmt.Println("Enter a distance in feet: ")
 
-  var f float64
-  fmt.Scanf("%f", &f)
+	var f float64
+	fmt.Scanf("%f", &f)
 
-  m := f * 0.3048
-  fmt.Println(m)
+	m := f * 0.3048
+	fmt.Println(m)
 }

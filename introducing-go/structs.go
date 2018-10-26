@@ -1,9 +1,9 @@
 package main
 
-import(
-  "fmt"
-  "reflect"
-  "math"
+import (
+	"fmt"
+	"math"
+	"reflect"
 )
 
 /*
@@ -105,89 +105,89 @@ type Shape interface{
 }
 */
 
-type Person struct{
-  Name string
+type Person struct {
+	Name string
 }
 
-func (p *Person) Talk(){
-  fmt.Println("hi my name is", p.Name)
+func (p *Person) Talk() {
+	fmt.Println("hi my name is", p.Name)
 }
 
-type Circle struct{
-  x float64
-  y float64
-  r float64
+type Circle struct {
+	x float64
+	y float64
+	r float64
 }
 
-type Rectangle struct{
-  x1 float64
-  y1 float64
-  x2 float64
-  y2 float64
+type Rectangle struct {
+	x1 float64
+	y1 float64
+	x2 float64
+	y2 float64
 }
 
 // this struct seems to indicate that an Android1 has a person
-type Android1 struct{
-  Person Person
-  Model string
+type Android1 struct {
+	Person Person
+	Model  string
 }
 
-type Android2 struct{
-  Person // embedded type
-  Model string
+type Android2 struct {
+	Person // embedded type
+	Model  string
 }
 
-func (r *Rectangle) area() float64{
-  l := distance(r.x1, r.y1, r.x1, r.y2)
-  w := distance(r.x1, r.y1, r.x2, r.y1)
-  return l * w
+func (r *Rectangle) area() float64 {
+	l := distance(r.x1, r.y1, r.x1, r.y2)
+	w := distance(r.x1, r.y1, r.x2, r.y1)
+	return l * w
 }
 
-func distance(x1, y1, x2, y2 float64) float64{
-  dx := x2 - x1
-  dy := y2 - y1
-  return math.Sqrt(dx*dx + dy*dy)
+func distance(x1, y1, x2, y2 float64) float64 {
+	dx := x2 - x1
+	dy := y2 - y1
+	return math.Sqrt(dx*dx + dy*dy)
 }
 
-func (this *Circle) area() float64{
-  return math.Pi * this.r * this.r
+func (this *Circle) area() float64 {
+	return math.Pi * this.r * this.r
 }
 
-func circleArea(c *Circle) float64{
-  return math.Pi * c.r * c.r
+func circleArea(c *Circle) float64 {
+	return math.Pi * c.r * c.r
 }
 
-func main(){
-  // struct
-  c := Circle{0, 0, 5}
-  fmt.Println(reflect.TypeOf(c))
-  fmt.Println(circleArea(&c))
+func main() {
+	// struct
+	c := Circle{0, 0, 5}
+	fmt.Println(reflect.TypeOf(c))
+	fmt.Println(circleArea(&c))
 
-  // pointer
-  c2 := &Circle{0, 0, 5}
-  fmt.Println(reflect.TypeOf(c2))
-  fmt.Println(circleArea(c2))
+	// pointer
+	c2 := &Circle{0, 0, 5}
+	fmt.Println(reflect.TypeOf(c2))
+	fmt.Println(circleArea(c2))
 
-  // method calls
-  c3 := Circle{1, 1, 10}
-  fmt.Println("struct method:", c3.area())
+	// method calls
+	c3 := Circle{1, 1, 10}
+	fmt.Println("struct method:", c3.area())
 
-  r := Rectangle{0, 0, 1, 1}
-  fmt.Println(r.area())
+	r := Rectangle{0, 0, 1, 1}
+	fmt.Println(r.area())
 
-  // HAS A
-  p := Person{"pythagroean"}
-  p.Talk()
+	// HAS A
+	p := Person{"pythagroean"}
+	p.Talk()
 
-  // IS A
-  // curly braces require commas (initialization)
-  // parentheses need new line (import)
-  a := Android2{
-    Person{"jackson"},
-    "A",
-  }
-  a.Talk()
+	// IS A
+	// curly braces require commas (initialization)
+	// parentheses need new line (import)
+	a := Android2{
+		Person{"jackson"},
+		"A",
+	}
+	a.Talk()
 
-  // fields are also inherited from embedded types
-  fmt.Println(a.Name)
+	// fields are also inherited from embedded types
+	fmt.Println(a.Name)
 }

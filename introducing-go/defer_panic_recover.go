@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func first(){
-  fmt.Println("first")
+func first() {
+	fmt.Println("first")
 }
 
-func second(){
-  fmt.Println("second")
+func second() {
+	fmt.Println("second")
 }
 
 /*
@@ -20,14 +20,14 @@ of the calling function, it is often used when resources need to be freed
 - supposedly defer can be used to keep the closing logic of a function close to
   the opening logic
 */
-func main(){
-  deferDemo()
-  recoverDemo()
+func main() {
+	deferDemo()
+	recoverDemo()
 }
 
-func deferDemo(){
-  defer second()
-  first()
+func deferDemo() {
+	defer second()
+	first()
 }
 
 /*
@@ -39,11 +39,11 @@ recover() stops the panic and returns the value that was passed to panic()
 since panic() immediately stops execution of a function, recover() must be
 deferred
 */
-func recoverDemo(){
-  defer func(){
-    str := recover()
-    fmt.Println(str)
-  }()
+func recoverDemo() {
+	defer func() {
+		str := recover()
+		fmt.Println(str)
+	}()
 
-  panic("panic recovered")
+	panic("panic recovered")
 }

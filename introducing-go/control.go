@@ -6,36 +6,36 @@ import "fmt"
 // traditional for and while) note parentheses are generally optional
 // go also supports reasonably traditional if and switch statements, note that
 // switch statements don't seem to require a break to prevent "fall through"
-func main(){
-  i := 1
+func main() {
+	i := 1
 
-  // while style
-  for i <= 10 {
-    fmt.Println(i)
-    i++
-  }
+	// while style
+	for i <= 10 {
+		fmt.Println(i)
+		i++
+	}
 
-  // for style
-  for j := 10; j >= 1; j-- {
-    fmt.Println(j)
-  }
+	// for style
+	for j := 10; j >= 1; j-- {
+		fmt.Println(j)
+	}
 
-  // if statements don't require parentheses
-  for i = 1; i < 11; i++ {
-    if i % 2 == 0 {
-      fmt.Println(i, " even")
-    } else {
-      fmt.Println(i, " odd")
-    }
-  }
+	// if statements don't require parentheses
+	for i = 1; i < 11; i++ {
+		if i%2 == 0 {
+			fmt.Println(i, " even")
+		} else {
+			fmt.Println(i, " odd")
+		}
+	}
 
-  // switch statement
-  switch("jackson"){
-  case "a":
-    fmt.Println("a")
-  case "jackson":
-    fmt.Println("jackson")
-  default:
-    fmt.Println("default")
-  }
+	// switch statement
+	switch "jackson" {
+	case "a":
+		fmt.Println("a")
+	case "jackson":
+		fmt.Println("jackson")
+	default:
+		fmt.Println("default")
+	}
 }

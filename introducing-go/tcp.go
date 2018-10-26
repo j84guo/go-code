@@ -1,9 +1,9 @@
 package main
 
-import(
+import (
+	"encoding/gob"
 	"fmt"
 	"net"
-	"encoding/gob"
 )
 
 /*
@@ -17,17 +17,17 @@ import(
 *
 * we use net.Accept to obtain new connections
 * net.Conn implements io.Reader and io.Writer interfaces
-*/
-func server(){
+ */
+func server() {
 	ln, err := net.Listen("tcp", "127.0.0.1:8000")
-	if err != nil{
+	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	for{
+	for {
 		cn, err := ln.Accept()
-		if err != nil{
+		if err != nil {
 			fmt.Println(err)
 			continue
 		}
@@ -37,40 +37,40 @@ func server(){
 	}
 }
 
-func handleConnection(cn net.Conn){
+func handleConnection(cn net.Conn) {
 	var msg string
 	err := gob.NewDecoder(cn).Decode(&msg)
 
-	if err != nil{
+	if err != nil {
 		fmt.Println(err)
-	}else{
+	} else {
 		fmt.Println(msg)
 	}
 
 	cn.Close()
 }
 
-func client(msg string){
+func client(msg string) {
 	cn, err := net.Dial("tcp", "127.0.0.1:8000")
-	if err != nil{
+	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
 	err = gob.NewEncoder(cn).Encode(msg)
-	if err != nil{
+	if err != nil {
 		fmt.Println(err)
 	}
 
 	cn.Close()
 }
 
-func main(){
+func main() {
 	go server()
 
-	for{
+	for {
 		var msg string
-	    fmt.Scanln(&msg)
+		fmt.Scanln(&msg)
 		client(msg)
 	}
 }

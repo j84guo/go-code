@@ -12,7 +12,7 @@ import "fmt"
 //
 // note that the opening curly brace must appear on the same line and that
 // semicolons are inserted by the compiler
-func main(){
+func main() {
 	// access Println function of the fmt package
 	fmt.Println("hello world")
 }

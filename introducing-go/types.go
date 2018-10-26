@@ -37,18 +37,18 @@ import "fmt"
 // boolean:
 // 1 bit integer type, true/false
 
-func main(){
-  fmt.Println("1 + 2 = ", 1 + 2)
-  fmt.Println("1.0 + 2.0 = ", 1.0 + 2.0)
+func main() {
+	fmt.Println("1 + 2 = ", 1+2)
+	fmt.Println("1.0 + 2.0 = ", 1.0+2.0)
 
-  // string length using global function len()
-  fmt.Println(len("jackson"))
+	// string length using global function len()
+	fmt.Println(len("jackson"))
 
-  // concatenation
-  fmt.Println("hello " + "world")
+	// concatenation
+	fmt.Println("hello " + "world")
 
-  // character access
-  fmt.Println("jackson"[0])
+	// character access
+	fmt.Println("jackson"[0])
 
-  fmt.Println(true || false)
+	fmt.Println(true || false)
 }

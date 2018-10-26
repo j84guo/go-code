@@ -1,12 +1,12 @@
 package main
 
-import(
-	"net/http"
+import (
 	"io"
+	"net/http"
 )
 
 // /hello controller
-func hello(res http.ResponseWriter, req *http.Request){
+func hello(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set(
 		"Content-Type",
 		"text/html",
@@ -27,7 +27,7 @@ func hello(res http.ResponseWriter, req *http.Request){
 }
 
 // error handling?
-func main(){
+func main() {
 	// register controller
 	http.HandleFunc("/hello", hello)
 
@@ -40,6 +40,6 @@ func main(){
 		),
 	)
 
-	// bind, listen, accept                                                     
-    http.ListenAndServe("0.0.0.0:9000", nil)
+	// bind, listen, accept
+	http.ListenAndServe("0.0.0.0:9000", nil)
 }

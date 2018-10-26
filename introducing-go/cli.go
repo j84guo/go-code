@@ -1,13 +1,13 @@
 package main
 
-import(
-	"fmt"
+import (
 	"flag"
-	"time"
+	"fmt"
 	"math/rand"
+	"time"
 )
 
-func main(){
+func main() {
 	max := flag.Int("max", 6, "maximum value")
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())

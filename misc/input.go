@@ -5,7 +5,6 @@ import (
 	"os"
 	"io"
 	"bufio"
-	"strings"
 	"strconv"
 )
 
@@ -17,20 +16,19 @@ import (
 func main() {
 	fmt.Print("prompt:")
 	reader := bufio.NewReader(os.Stdin)
-	line, err := reader.ReadString('\n')
-	if err != nil {
-		if err == io.EOF {
+	line, e := reader.ReadString('\n')
+	if e != nil {
+		if e == io.EOF {
 			os.Exit(0)
 		}
-		fmt.Fprintf(os.Stderr, err.Error())
+		fmt.Fprintf(os.Stderr, e.Error())
 		os.Exit(1)
 	}
 
-	line = strings.TrimSpace(line)
-	grade, err := strconv.ParseFloat(line, 64)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err.Error())
+	f, e := strconv.ParseFloat(line[0:len(line)-1], 64)
+	if e != nil {
+		fmt.Fprintln(os.Stderr, e.Error())
 		os.Exit(1)
 	}
-	fmt.Println("You entered", grade)
+	fmt.Println("You entered", f)
 }

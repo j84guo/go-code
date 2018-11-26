@@ -14,7 +14,7 @@ import (
  * individually if needed
  */
 func main() {
-	fmt.Print("prompt:")
+	fmt.Print("Enter a number:")
 	reader := bufio.NewReader(os.Stdin)
 	line, e := reader.ReadString('\n')
 	if e != nil {
